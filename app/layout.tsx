@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
+import { DM_Sans, Manrope } from 'next/font/google';
 import './globals.css';
+
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const manrope = Manrope({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rebuild-brand.vercel.app'),
@@ -42,7 +46,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${dmSans.variable} ${manrope.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       </head>
