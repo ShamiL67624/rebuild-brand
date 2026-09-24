@@ -185,9 +185,18 @@ export default function EnergyEmblem({ className = '' }: { className?: string })
     updateVisibility();
     media.addEventListener('change', updateMotion);
     document.addEventListener('visibilitychange', updateVisibility);
+    let deferred = false;
+    const scheduleCanvas = () => {
+      if (deferred) return;
+      deferred = true;
+      const mount = () => setEntered(true);
+      const win = window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout?: number }) => number; cancelIdleCallback?: (id: number) => void };
+      if (typeof win.requestIdleCallback === 'function') win.requestIdleCallback(mount, { timeout: 3000 });
+      else setTimeout(mount, 1200);
+    };
     const observer = new IntersectionObserver(([entry]) => {
       setVisible(entry.isIntersecting);
-      if (entry.isIntersecting) setEntered(true);
+      if (entry.isIntersecting) scheduleCanvas();
     }, { rootMargin: '80px' });
     if (host.current) observer.observe(host.current);
     return () => {
