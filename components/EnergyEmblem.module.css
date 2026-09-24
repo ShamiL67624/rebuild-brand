@@ -1,0 +1,124 @@
+.emblem {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  isolation: isolate;
+}
+
+.halo {
+  position: absolute;
+  inset: 3% -8% 4%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 48% 45%, #ffead0 0%, #f8e4cd55 38%, #f7f5f000 69%);
+  pointer-events: none;
+}
+
+.floor {
+  position: absolute;
+  width: 44%;
+  height: 6%;
+  bottom: 13%;
+  left: 28%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #78462429, #78462410 42%, transparent 72%);
+  filter: blur(9px);
+  transform: rotate(-4deg);
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity .35s ease;
+}
+
+.hidden { opacity: 0; }
+
+.fallbackLoop {
+  position: absolute;
+  top: 16%;
+  left: 30%;
+  width: 41%;
+  height: 63%;
+  border: clamp(17px, 3.1vw, 42px) solid #ee7923;
+  border-top-color: #ffb15a;
+  border-left-color: #f99432;
+  border-bottom-color: #c1490b;
+  border-radius: 49% 53% 47% 48% / 68% 65% 37% 37%;
+  transform: perspective(750px) rotateZ(19deg) rotateY(-24deg);
+  box-shadow: inset 8px 3px 12px #9832043b, 7px 3px 0 #bc4a0a, 15px 8px 18px #c9711e19;
+}
+
+.fallbackInner {
+  position: absolute;
+  top: 23%;
+  left: 37%;
+  width: 27%;
+  height: 48%;
+  border: 13px solid #ffc37c;
+  border-left-color: #ffab46;
+  border-bottom-color: #d27827;
+  border-radius: 50% 50% 46% 46% / 65% 65% 38% 38%;
+  transform: perspective(700px) rotateZ(10deg) rotateY(25deg);
+  box-shadow: 4px 1px 0 #d08035;
+}
+
+.fallbackCore {
+  position: absolute;
+  width: 11%;
+  aspect-ratio: 1;
+  top: 45%;
+  left: 45%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 26%, #fff2c3 0%, #ffb653 17%, #f17519 44%, #ba440c 85%);
+  box-shadow: 5px 8px 18px #9e54172b;
+}
+
+.fallbackOrbit {
+  position: absolute;
+  top: 33%;
+  left: 13%;
+  width: 76%;
+  height: 32%;
+  border-radius: 50%;
+  border: 1px solid #14254238;
+  transform: rotate(-23deg);
+}
+
+.crossTop, .crossBottom {
+  position: absolute;
+  color: #14254244;
+  font: 300 18px/1 monospace;
+}
+
+.crossTop { top: 12%; right: 13%; }
+.crossBottom { bottom: 14%; left: 13%; }
+
+.coordinate {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #14254269;
+  font: 500 9px/1.4 monospace;
+  letter-spacing: 1.1px;
+  white-space: nowrap;
+}
+
+@media (max-width: 650px) {
+  .emblem { min-height: 320px; }
+  .fallbackLoop { border-width: 24px; }
+  .fallbackInner { border-width: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fallback { transition: none; }
+}
